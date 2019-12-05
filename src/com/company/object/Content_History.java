@@ -10,5 +10,5 @@ public class Content_History {
     @ElementList(name="Submission",inline = true, required = false)
     public List<Submission> submissionList;
     @ElementList(name = "Modification", inline = true, required = false)
-    public List<Mitigation> mitigationList;
+    public List<Modification> modificationList;
 }
