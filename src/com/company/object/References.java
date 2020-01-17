@@ -9,4 +9,12 @@ import java.util.List;
 public class References {
     @ElementList(name="Reference",inline = true, required = false)
     public List<Reference> referenceList;
+
+    public List<Reference> getReferenceList() {
+        return referenceList;
+    }
+
+    public void setReferenceList(List<Reference> referenceList) {
+        this.referenceList = referenceList;
+    }
 }

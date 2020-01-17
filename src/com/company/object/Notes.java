@@ -12,4 +12,7 @@ public class Notes {
         this.text = text;
     }
 
+    public String getText() {
+        return text;
+    }
 }

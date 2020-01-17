@@ -12,4 +12,8 @@ public class Details {
     public void setDetail(String detail) {
         this.detail = detail;
     }
+
+    public String getDetail() {
+        return detail;
+    }
 }

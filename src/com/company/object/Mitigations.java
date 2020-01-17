@@ -10,4 +10,12 @@ import java.util.List;
 public class Mitigations {
     @ElementList(name="Mitigation",inline = true, required = false)
     public List<Mitigation> mitigation;
+
+    public List<Mitigation> getMitigation() {
+        return mitigation;
+    }
+
+    public void setMitigation(List<Mitigation> mitigation) {
+        this.mitigation = mitigation;
+    }
 }

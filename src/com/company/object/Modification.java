@@ -13,4 +13,36 @@ public class Modification {
     public String date;
     @Element(name="Modification_Comment",required = false)
     public String coment;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getComent() {
+        return coment;
+    }
+
+    public void setComent(String coment) {
+        this.coment = coment;
+    }
 }

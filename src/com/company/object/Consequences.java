@@ -13,4 +13,8 @@ public class Consequences {
     public void setConsequence(List<Consequence> consequence) {
         this.consequence = consequence;
     }
+
+    public List<Consequence> getConsequence() {
+        return consequence;
+    }
 }

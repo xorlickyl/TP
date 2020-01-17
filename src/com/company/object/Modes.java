@@ -13,4 +13,8 @@ public class Modes {
     public void setIntroduction(List<Introduction> introduction) {
         this.introduction = introduction;
     }
+
+    public List<Introduction> getIntroduction() {
+        return introduction;
+    }
 }

@@ -15,12 +15,24 @@ public class Consequence {
     @ElementList(name = "Note",inline = true, required = false)
     public List<Notes> note;
 
+    public List<Scope> getScope() {
+        return scope;
+    }
+
     public void setScope(List<Scope> scope) {
         this.scope = scope;
     }
 
+    public List<Impacts> getImpact() {
+        return impact;
+    }
+
     public void setImpact(List<Impacts> impact) {
         this.impact = impact;
+    }
+
+    public List<Notes> getNote() {
+        return note;
     }
 
     public void setNote(List<Notes> note) {

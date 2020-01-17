@@ -7,11 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="net.sourceforge.owlapi:owlapi-api:5.1.12" level="project" />
-    <orderEntry type="library" name="net.sourceforge.owlapi:owlapi-distribution:5.1.12" level="project" />
-    <orderEntry type="library" name="net.sourceforge.owlapi:owlapi-apibinding:5.1.12" level="project" />
     <orderEntry type="library" name="org.simpleframework:simple-xml:2.7.1" level="project" />
     <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.29" level="project" />
     <orderEntry type="library" name="Simple Logging Facade for Java:1.7.29" level="project" />
+    <orderEntry type="library" name="net.sourceforge.owlapi:owlapi-distribution:5.1.0" level="project" />
   </component>
 </module>

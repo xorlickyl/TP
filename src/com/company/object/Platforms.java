@@ -26,4 +26,16 @@ public class Platforms {
     public void setTechnology(List<Technology> technology) {
         this.technology = technology;
     }
+
+    public List<Language> getLanguage() {
+        return language;
+    }
+
+    public Paradigm getParadigm() {
+        return paradigm;
+    }
+
+    public List<Technology> getTechnology() {
+        return technology;
+    }
 }

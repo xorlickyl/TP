@@ -7,4 +7,12 @@ import org.simpleframework.xml.Root;
 public class Phase {
     @Element(name="Phase",required = false)
     public String phase;
+
+    public String getPhase() {
+        return phase;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
 }

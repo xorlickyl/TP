@@ -7,4 +7,12 @@ import org.simpleframework.xml.Root;
 public class Reference {
     @Attribute(name="External_Reference_ID",required = false)
     public String ID;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }

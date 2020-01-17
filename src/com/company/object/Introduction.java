@@ -11,4 +11,8 @@ public class Introduction {
     public void setPhase(String phase) {
         this.phase = phase;
     }
+
+    public String getPhase() {
+        return phase;
+    }
 }

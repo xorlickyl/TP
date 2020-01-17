@@ -11,7 +11,7 @@ public class Weaknesses {
     @ElementList(name="Weakness",inline = true, required = false)
     public List<Weakness> Weakness;
 
-    public List<com.company.object.Weakness> getWeakness() {
+    public List<Weakness> getWeakness() {
         return Weakness;
     }
 
