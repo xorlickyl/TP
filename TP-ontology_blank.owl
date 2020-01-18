@@ -16,6 +16,9 @@
         <Class IRI="/#CVE"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#CVE_Data"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#CWE"/>
     </Declaration>
     <Declaration>
@@ -28,13 +31,29 @@
         <Class IRI="/#Mitre"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#Note"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Paradigm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Reference"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#Source"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Technology"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="/#CVE"/>
         <Class IRI="/#Mitre"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="/#CVE_Data"/>
+        <Class IRI="/#Mitre"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="/#CWE"/>
         <Class IRI="/#Mitre"/>
     </SubClassOf>
@@ -49,6 +68,22 @@
     <SubClassOf>
         <Class IRI="/#Mitre"/>
         <Class IRI="/#Source"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Note"/>
+        <Class IRI="/#CVE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Paradigm"/>
+        <Class IRI="/#CWE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Reference"/>
+        <Class IRI="/#CVE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Technology"/>
+        <Class IRI="/#CWE_Data"/>
     </SubClassOf>
 </Ontology>
 

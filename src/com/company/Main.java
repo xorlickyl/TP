@@ -34,22 +34,23 @@ public class Main {
 
             OWLClass CWEClass = dataFactory.getOWLClass("#CWE", pm);
             OWLClass Languages = dataFactory.getOWLClass("#Languages", pm);
+            OWLClass Technology = dataFactory.getOWLClass("#Technology", pm);
+            OWLClass Paradigm = dataFactory.getOWLClass("#Paradigm", pm);
             OWLDataProperty Name_property = dataFactory.getOWLDataProperty("Name",pm);
             OWLDataProperty Description = dataFactory.getOWLDataProperty("Description",pm);
             OWLDataProperty Exploit = dataFactory.getOWLDataProperty("Likelihood_Of_Exploit", pm);
             OWLDataProperty ExtDescription = dataFactory.getOWLDataProperty("Extended_Description",pm);
-            //OWLDataProperty Prevalence_Lang = dataFactory.getOWLDataProperty("Prevalence",pm);
+
             OWLObjectProperty Child_of = dataFactory.getOWLObjectProperty("is_child_of", pm);
-           // OWLClass Phase = dataFactory.getOWLClass("#Phase", pm);
-           // OWLObjectProperty PhaseObject =dataFactory.getOWLObjectProperty("has_phase",pm);
+            OWLObjectProperty OnLang = dataFactory.getOWLObjectProperty("is_for_language", pm);
+            OWLObjectProperty OnTech = dataFactory.getOWLObjectProperty("is_technology",pm);
+            OWLObjectProperty OnPara = dataFactory.getOWLObjectProperty("is_paradigm",pm);
+
             OWLNamedIndividual LangIdenpendetItem = dataFactory.getOWLNamedIndividual(":LANG_Language-Independent",pm);
             OWLClassAssertionAxiom LI = dataFactory.getOWLClassAssertionAxiom(Languages,LangIdenpendetItem);
             m.addAxiom(o,LI);
-            OWLObjectProperty OnLang = dataFactory.getOWLObjectProperty("is_for_language", pm);
-
 
             for(Weakness item :weaknesses.getWeaknesses().getWeakness()) {
-
                 OWLNamedIndividual CWEItem = dataFactory.getOWLNamedIndividual(":" + item.getID(), pm);
                 OWLClassAssertionAxiom I = dataFactory.getOWLClassAssertionAxiom(CWEClass, CWEItem);
                 m.addAxiom(o, I);
@@ -82,8 +83,6 @@ public class Main {
                                 if (lang.getName_class() != null) {
                                     OWLObjectPropertyAssertionAxiom lang_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnLang, CWEItem, LangIdenpendetItem);
                                     m.addAxiom(o, lang_is);
-                                    //OWLDataPropertyAssertionAxiom preval = dataFactory.getOWLDataPropertyAssertionAxiom(Prevalence_Lang,LangIdenpendetItem,lang.getPrevalence());
-                                    //m.addAxiom(o,preval);
                                 }
                                 if(lang.getName()!=null){
                                     OWLNamedIndividual LangOtherItem = dataFactory.getOWLNamedIndividual(":LANG_" + lang.getName(),pm);
@@ -91,27 +90,31 @@ public class Main {
                                     m.addAxiom(o, LOI);
                                     OWLObjectPropertyAssertionAxiom lang_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnLang, CWEItem, LangOtherItem);
                                     m.addAxiom(o, lang_is);
-                                    //OWLDataPropertyAssertionAxiom preval = dataFactory.getOWLDataPropertyAssertionAxiom(Prevalence_Lang,LangOtherItem,lang.getPrevalence());
-                                    //m.addAxiom(o,preval);
                                 }
                         }
                     }
-                }
-                /*
-                int counter =0;
-                if(item.getModes()!=null){
-                        for (Introduction introd : item.getModes().getIntroduction()) {
-                            OWLNamedIndividual PhaseItem = dataFactory.getOWLNamedIndividual(":" + item.getID() + "_Phase_" + counter, pm);
-                            OWLClassAssertionAxiom PI = dataFactory.getOWLClassAssertionAxiom(Phase, PhaseItem);
-                            m.addAxiom(o, PI);
-                            OWLObjectPropertyAssertionAxiom ObjectAxiom =dataFactory.getOWLObjectPropertyAssertionAxiom(PhaseObject,CWEItem,PhaseItem);
-                            m.addAxiom(o,ObjectAxiom);
-                            counter++;
-
+                    if(item.getPlatforms().getTechnology()!=null){
+                        for(Technology tech :item.getPlatforms().getTechnology()){
+                            if(tech.getServer()!=null){
+                                OWLNamedIndividual TechItem = dataFactory.getOWLNamedIndividual(":"+tech.getServer(),pm);
+                                OWLClassAssertionAxiom TI = dataFactory.getOWLClassAssertionAxiom(Technology,TechItem);
+                                m.addAxiom(o,TI);
+                                OWLObjectPropertyAssertionAxiom tech_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnTech,CWEItem,TechItem);
+                                m.addAxiom(o,tech_is);
+                            }
                         }
+                    }
+                   /* if(item.getPlatforms().getParadigm()!=null){
+                        Paradigm parad = item.getPlatforms().getParadigm();
+                        if(parad.getName()!=null) {
+                            OWLNamedIndividual ParadigmItem = dataFactory.getOWLNamedIndividual(":"+parad.getName(), pm);
+                            OWLClassAssertionAxiom PI = dataFactory.getOWLClassAssertionAxiom(Paradigm, ParadigmItem);
+                            m.addAxiom(o, PI);
+                            OWLObjectPropertyAssertionAxiom para_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnPara, CWEItem, ParadigmItem);
+                            m.addAxiom(o, para_is);
+                        }
+                    }*/
                 }
-                */
-
             }
 
             m.saveOntology(o);
