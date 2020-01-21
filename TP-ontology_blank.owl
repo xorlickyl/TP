@@ -31,6 +31,9 @@
         <Class IRI="/#Mitre"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#Modes_Of_Introduction"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#Note"/>
     </Declaration>
     <Declaration>
@@ -68,6 +71,10 @@
     <SubClassOf>
         <Class IRI="/#Mitre"/>
         <Class IRI="/#Source"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Modes_Of_Introduction"/>
+        <Class IRI="/#CWE_Data"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="/#Note"/>

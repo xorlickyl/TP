@@ -20,8 +20,6 @@ public class Weakness {
     public Child children;
     @Element(name = "Applicable_Platforms", required = false)
     public Platforms platforms;
-    @Element(name="Background_Details", required = false)
-    public Details details;
     @Element(name = "Modes_Of_Introduction", required = false)
     public Modes modes;
     @Element(name = "Likelihood_Of_Exploit", required = false)
@@ -85,14 +83,6 @@ public class Weakness {
 
     public void setPlatforms(Platforms platforms) {
         this.platforms = platforms;
-    }
-
-    public Details getDetails() {
-        return details;
-    }
-
-    public void setDetails(Details details) {
-        this.details = details;
     }
 
     public Modes getModes() {

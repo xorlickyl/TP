@@ -21,7 +21,6 @@ public class Main {
 
         try {
             Weakness_Catalog weaknesses=serializer.read(Weakness_Catalog.class, result);
-            //System.out.println(weaknesses.getWeaknesses().getWeakness().get(0).getDemo_example().getDemo_example_into().get(0).getExample_code().get(0).getText());
             OWLOntologyManager m = OWLManager.createOWLOntologyManager();
             OWLOntology o = m.loadOntologyFromOntologyDocument(OntologyFile);
             String base1 = o.getOntologyID().getOntologyIRI().toString();
@@ -36,6 +35,8 @@ public class Main {
             OWLClass Languages = dataFactory.getOWLClass("#Languages", pm);
             OWLClass Technology = dataFactory.getOWLClass("#Technology", pm);
             OWLClass Paradigm = dataFactory.getOWLClass("#Paradigm", pm);
+            OWLClass Modes = dataFactory.getOWLClass("#Modes_Of_Introduction", pm);
+
             OWLDataProperty Name_property = dataFactory.getOWLDataProperty("Name",pm);
             OWLDataProperty Description = dataFactory.getOWLDataProperty("Description",pm);
             OWLDataProperty Exploit = dataFactory.getOWLDataProperty("Likelihood_Of_Exploit", pm);
@@ -45,10 +46,14 @@ public class Main {
             OWLObjectProperty OnLang = dataFactory.getOWLObjectProperty("is_for_language", pm);
             OWLObjectProperty OnTech = dataFactory.getOWLObjectProperty("is_technology",pm);
             OWLObjectProperty OnPara = dataFactory.getOWLObjectProperty("is_paradigm",pm);
+            OWLObjectProperty Modes_is = dataFactory.getOWLObjectProperty("is_modes_of",pm);
 
             OWLNamedIndividual LangIdenpendetItem = dataFactory.getOWLNamedIndividual(":LANG_Language-Independent",pm);
             OWLClassAssertionAxiom LI = dataFactory.getOWLClassAssertionAxiom(Languages,LangIdenpendetItem);
             m.addAxiom(o,LI);
+            OWLNamedIndividual IntroducItemImpleme = dataFactory.getOWLNamedIndividual(":Implementation",pm);
+            OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItemImpleme);
+            m.addAxiom(o, III);
 
             for(Weakness item :weaknesses.getWeaknesses().getWeakness()) {
                 OWLNamedIndividual CWEItem = dataFactory.getOWLNamedIndividual(":" + item.getID(), pm);
@@ -93,7 +98,7 @@ public class Main {
                                 }
                         }
                     }
-                    if(item.getPlatforms().getTechnology()!=null){
+                    /*if(item.getPlatforms().getTechnology()!=null){
                         for(Technology tech :item.getPlatforms().getTechnology()){
                             if(tech.getServer()!=null){
                                 OWLNamedIndividual TechItem = dataFactory.getOWLNamedIndividual(":"+tech.getServer(),pm);
@@ -103,8 +108,8 @@ public class Main {
                                 m.addAxiom(o,tech_is);
                             }
                         }
-                    }
-                   /* if(item.getPlatforms().getParadigm()!=null){
+                    }*/
+                    /*if(item.getPlatforms().getParadigm()!=null){
                         Paradigm parad = item.getPlatforms().getParadigm();
                         if(parad.getName()!=null) {
                             OWLNamedIndividual ParadigmItem = dataFactory.getOWLNamedIndividual(":"+parad.getName(), pm);
@@ -114,6 +119,19 @@ public class Main {
                             m.addAxiom(o, para_is);
                         }
                     }*/
+                }
+                if(item.getModes()!=null){
+                    if(item.getModes().getIntroduction()!=null){
+                        for(Introduction intro : item.getModes().getIntroduction()){
+                            if(intro.getPhase()!=null) {
+                                if(intro.getPhase().equals("Implementation")) {
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItemImpleme);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
