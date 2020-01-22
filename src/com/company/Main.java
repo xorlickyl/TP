@@ -51,9 +51,6 @@ public class Main {
             OWLNamedIndividual LangIdenpendetItem = dataFactory.getOWLNamedIndividual(":LANG_Language-Independent",pm);
             OWLClassAssertionAxiom LI = dataFactory.getOWLClassAssertionAxiom(Languages,LangIdenpendetItem);
             m.addAxiom(o,LI);
-            OWLNamedIndividual IntroducItemImpleme = dataFactory.getOWLNamedIndividual(":Implementation",pm);
-            OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItemImpleme);
-            m.addAxiom(o, III);
 
             for(Weakness item :weaknesses.getWeaknesses().getWeakness()) {
                 OWLNamedIndividual CWEItem = dataFactory.getOWLNamedIndividual(":" + item.getID(), pm);
@@ -98,41 +95,97 @@ public class Main {
                                 }
                         }
                     }
-                    /*if(item.getPlatforms().getTechnology()!=null){
+                    if(item.getPlatforms().getTechnology()!=null){
                         for(Technology tech :item.getPlatforms().getTechnology()){
                             if(tech.getServer()!=null){
-                                OWLNamedIndividual TechItem = dataFactory.getOWLNamedIndividual(":"+tech.getServer(),pm);
+                                String server =tech.getServer();
+                                server = server.replace(" ","_");
+                                OWLNamedIndividual TechItem = dataFactory.getOWLNamedIndividual(":"+server,pm);
                                 OWLClassAssertionAxiom TI = dataFactory.getOWLClassAssertionAxiom(Technology,TechItem);
                                 m.addAxiom(o,TI);
                                 OWLObjectPropertyAssertionAxiom tech_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnTech,CWEItem,TechItem);
                                 m.addAxiom(o,tech_is);
                             }
                         }
-                    }*/
-                    /*if(item.getPlatforms().getParadigm()!=null){
+                    }
+                    if(item.getPlatforms().getParadigm()!=null){
                         Paradigm parad = item.getPlatforms().getParadigm();
                         if(parad.getName()!=null) {
-                            OWLNamedIndividual ParadigmItem = dataFactory.getOWLNamedIndividual(":"+parad.getName(), pm);
+                            String paradigm = parad.getName();
+                            paradigm = paradigm.replace(" ","_");
+                            OWLNamedIndividual ParadigmItem = dataFactory.getOWLNamedIndividual(":"+paradigm, pm);
                             OWLClassAssertionAxiom PI = dataFactory.getOWLClassAssertionAxiom(Paradigm, ParadigmItem);
                             m.addAxiom(o, PI);
                             OWLObjectPropertyAssertionAxiom para_is = dataFactory.getOWLObjectPropertyAssertionAxiom(OnPara, CWEItem, ParadigmItem);
                             m.addAxiom(o, para_is);
                         }
-                    }*/
+                    }
                 }
                 if(item.getModes()!=null){
                     if(item.getModes().getIntroduction()!=null){
                         for(Introduction intro : item.getModes().getIntroduction()){
                             if(intro.getPhase()!=null) {
-                                if(intro.getPhase().equals("Implementation")) {
-                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItemImpleme);
+                                /*if(intro.getPhase().equals("Implementation")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Implementation",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
                                     m.addAxiom(o, intro_imp_is);
                                 }
-
+                                /*if(intro.getPhase().equals("Architecture and Design")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Architecture and Design",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+                                if(intro.getPhase().equals("Operation")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Operation",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+                                if(intro.getPhase().equals("Build and Compilation")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Build_and_Compilation",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+                                if(intro.getPhase().equals("System Configuration")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":System Configuration",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+                                if(intro.getPhase().equals("Installation")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Installation",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }
+                                if(intro.getPhase().equals("Requirements")) {
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":Requirements",pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
+                                }*/
+                                    String phase = intro.getPhase();
+                                    phase = phase.replace(" ","_");
+                                    OWLNamedIndividual IntroducItem = dataFactory.getOWLNamedIndividual(":"+phase,pm);
+                                    OWLClassAssertionAxiom III = dataFactory.getOWLClassAssertionAxiom(Modes, IntroducItem);
+                                    m.addAxiom(o, III);
+                                    OWLObjectPropertyAssertionAxiom intro_imp_is = dataFactory.getOWLObjectPropertyAssertionAxiom(Modes_is, CWEItem, IntroducItem);
+                                    m.addAxiom(o, intro_imp_is);
                             }
                         }
                     }
                 }
+
             }
 
             m.saveOntology(o);
