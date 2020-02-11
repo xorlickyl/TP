@@ -25,6 +25,9 @@
         <Class IRI="/#CWE_Data"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#Consequence"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#Languages"/>
     </Declaration>
     <Declaration>
@@ -63,6 +66,10 @@
     <SubClassOf>
         <Class IRI="/#CWE_Data"/>
         <Class IRI="/#Mitre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Consequence"/>
+        <Class IRI="/#CWE_Data"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="/#Languages"/>

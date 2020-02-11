@@ -36,17 +36,20 @@ public class Main {
             OWLClass Technology = dataFactory.getOWLClass("#Technology", pm);
             OWLClass Paradigm = dataFactory.getOWLClass("#Paradigm", pm);
             OWLClass Modes = dataFactory.getOWLClass("#Modes_Of_Introduction", pm);
+            OWLClass Consequence = dataFactory.getOWLClass("#Consequence", pm);
 
             OWLDataProperty Name_property = dataFactory.getOWLDataProperty("Name",pm);
             OWLDataProperty Description = dataFactory.getOWLDataProperty("Description",pm);
             OWLDataProperty Exploit = dataFactory.getOWLDataProperty("Likelihood_Of_Exploit", pm);
             OWLDataProperty ExtDescription = dataFactory.getOWLDataProperty("Extended_Description",pm);
+            OWLDataProperty Scope_conseq = dataFactory.getOWLDataProperty("Scope",pm);
 
             OWLObjectProperty Child_of = dataFactory.getOWLObjectProperty("is_child_of", pm);
             OWLObjectProperty OnLang = dataFactory.getOWLObjectProperty("is_for_language", pm);
             OWLObjectProperty OnTech = dataFactory.getOWLObjectProperty("is_technology",pm);
             OWLObjectProperty OnPara = dataFactory.getOWLObjectProperty("is_paradigm",pm);
             OWLObjectProperty Modes_is = dataFactory.getOWLObjectProperty("is_modes_of",pm);
+            OWLObjectProperty Consequence_is = dataFactory.getOWLObjectProperty("is_consequence",pm);
 
             OWLNamedIndividual LangIdenpendetItem = dataFactory.getOWLNamedIndividual(":LANG_Language-Independent",pm);
             OWLClassAssertionAxiom LI = dataFactory.getOWLClassAssertionAxiom(Languages,LangIdenpendetItem);
@@ -136,7 +139,23 @@ public class Main {
                         }
                     }
                 }
-                
+                if(item.getConsequences()!=null){
+                    if(item.getConsequences().getConsequence()!=null){
+                        int x= 0;
+                        for(Consequence conseq : item.getConsequences().getConsequence()){
+                            OWLNamedIndividual ConseqItem = dataFactory.getOWLNamedIndividual(":Consequence_"+item.getID()+"_"+x,pm);
+                            OWLClassAssertionAxiom CI = dataFactory.getOWLClassAssertionAxiom(Consequence, ConseqItem);
+                            m.addAxiom(o, CI);
+                            x++;
+                            OWLObjectPropertyAssertionAxiom conseq_id = dataFactory.getOWLObjectPropertyAssertionAxiom(Consequence_is, CWEItem, ConseqItem);
+                            m.addAxiom(o, conseq_id);
+                            if(conseq.getScope()!=null){
+                                OWLDataPropertyAssertionAxiom scope_conseq = dataFactory.getOWLDataPropertyAssertionAxiom(Scope_conseq,ConseqItem,conseq.getScope());
+                                m.addAxiom(o,scope_conseq);
+                            }
+                        }
+                    }
+                }
             }
 
             m.saveOntology(o);
