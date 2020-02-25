@@ -8,6 +8,8 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -142,16 +144,21 @@ public class Main {
                 if(item.getConsequences()!=null){
                     if(item.getConsequences().getConsequence()!=null){
                         int x= 0;
-                        for(Consequence conseq : item.getConsequences().getConsequence()){
-                            OWLNamedIndividual ConseqItem = dataFactory.getOWLNamedIndividual(":Consequence_"+item.getID()+"_"+x,pm);
+                        for(Consequence conseq : item.getConsequences().getConsequence()) {
+                            OWLNamedIndividual ConseqItem = dataFactory.getOWLNamedIndividual(":Consequence_" + item.getID() + "_" + x, pm);
                             OWLClassAssertionAxiom CI = dataFactory.getOWLClassAssertionAxiom(Consequence, ConseqItem);
                             m.addAxiom(o, CI);
                             x++;
                             OWLObjectPropertyAssertionAxiom conseq_id = dataFactory.getOWLObjectPropertyAssertionAxiom(Consequence_is, CWEItem, ConseqItem);
                             m.addAxiom(o, conseq_id);
-                            if(conseq.getScope()!=null){
-                                OWLDataPropertyAssertionAxiom scope_conseq = dataFactory.getOWLDataPropertyAssertionAxiom(Scope_conseq,ConseqItem,conseq.getScope());
-                                m.addAxiom(o,scope_conseq);
+                            if (conseq.getScope() != null) {
+                                List<Scope> ScopeList = conseq.getScope();
+                                for (Scope oneScope : ScopeList) {
+                                    if (oneScope.getText() != null){
+                                        OWLDataPropertyAssertionAxiom scope_conseq = dataFactory.getOWLDataPropertyAssertionAxiom(Scope_conseq, ConseqItem, oneScope.getText());
+                                        m.addAxiom(o, scope_conseq);
+                                    }
+                                }
                             }
                         }
                     }
