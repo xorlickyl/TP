@@ -28,6 +28,15 @@
         <Class IRI="/#Consequence"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#Contributor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Demo_Example"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Family"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#Languages"/>
     </Declaration>
     <Declaration>
@@ -40,7 +49,28 @@
         <Class IRI="/#Note"/>
     </Declaration>
     <Declaration>
+        <Class IRI="/#OVAL"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#OVAL_Data"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Observed_Example"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Organization"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="/#Paradigm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Platform"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Potential_Mitigations"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/#Product"/>
     </Declaration>
     <Declaration>
         <Class IRI="/#Reference"/>
@@ -72,6 +102,18 @@
         <Class IRI="/#CWE_Data"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="/#Contributor"/>
+        <Class IRI="/#OVAL_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Demo_Example"/>
+        <Class IRI="/#CWE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Family"/>
+        <Class IRI="/#OVAL_Data"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="/#Languages"/>
         <Class IRI="/#CWE_Data"/>
     </SubClassOf>
@@ -88,8 +130,36 @@
         <Class IRI="/#CVE_Data"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="/#OVAL"/>
+        <Class IRI="/#Mitre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#OVAL_Data"/>
+        <Class IRI="/#Mitre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Observed_Example"/>
+        <Class IRI="/#CWE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Organization"/>
+        <Class IRI="/#OVAL_Data"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="/#Paradigm"/>
         <Class IRI="/#CWE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Platform"/>
+        <Class IRI="/#Family"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Potential_Mitigations"/>
+        <Class IRI="/#CWE_Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/#Product"/>
+        <Class IRI="/#Family"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="/#Reference"/>

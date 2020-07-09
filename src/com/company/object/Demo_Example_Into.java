@@ -6,13 +6,13 @@ import org.simpleframework.xml.Root;
 
 import java.util.List;
 
-@Root(name="Demonstrative_Example",strict = false)
+@Root(name = "Demonstrative_Example", strict = false)
 public class Demo_Example_Into {
-    @Element(name="Intro_Text",required = false)
+    @Element(name = "Intro_Text", required = false)
     public String intro_text;
-    @ElementList(name="Body_Text",inline = true,required = false)
-    public List<String> body_text;
-    @ElementList(name="Example_Code", inline = true, required = false)
+    @ElementList(name = "Body_Text", inline = true, required = false)
+    public List<Body> body_text;
+    @ElementList(name = "Example_Code", inline = true, required = false)
     public List<Example_Code> example_code;
 
     public String getIntro_text() {
@@ -23,11 +23,11 @@ public class Demo_Example_Into {
         this.intro_text = intro_text;
     }
 
-    public List<String> getBody_text() {
+    public List<Body> getBody_text() {
         return body_text;
     }
 
-    public void setBody_text(List<String> body_text) {
+    public void setBody_text(List<Body> body_text) {
         this.body_text = body_text;
     }
 

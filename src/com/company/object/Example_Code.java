@@ -1,16 +1,17 @@
 package com.company.object;
 
 import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Text;
 
-@Root(name="Example_Code",strict = false)
+@Root(name = "Example_Code", strict = false)
 public class Example_Code {
-    @Attribute(name="Nature",required = false)
+    @Attribute(name = "Nature", required = false)
     public String nature;
-    @Attribute(name="Language",required = false)
+    @Attribute(name = "Language", required = false)
     public String language;
-    @Text
+    @Text(required = false)
     public String text;
 
     public String getNature() {

@@ -6,9 +6,9 @@ import org.simpleframework.xml.Root;
 
 import java.util.List;
 
-@Root(name="Potential_Mitigations", strict = false)
+@Root(name = "Potential_Mitigations", strict = false)
 public class Mitigations {
-    @ElementList(name="Mitigation",inline = true, required = false)
+    @ElementList(name = "Mitigation", inline = true, required = false)
     public List<Mitigation> mitigation;
 
     public List<Mitigation> getMitigation() {
@@ -17,5 +17,12 @@ public class Mitigations {
 
     public void setMitigation(List<Mitigation> mitigation) {
         this.mitigation = mitigation;
+    }
+
+    @Override
+    public String toString() {
+        return "Mitigations{" +
+                "mitigation=" + mitigation +
+                '}';
     }
 }

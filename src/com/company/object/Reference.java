@@ -3,9 +3,9 @@ package com.company.object;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(name="Reference",strict = false)
+@Root(name = "Reference", strict = false)
 public class Reference {
-    @Attribute(name="External_Reference_ID",required = false)
+    @Attribute(name = "External_Reference_ID", required = false)
     public String ID;
 
     public String getID() {

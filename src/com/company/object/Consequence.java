@@ -10,9 +10,9 @@ import java.util.List;
 public class Consequence {
     @ElementList(name = "Scope", inline = true, required = false)
     public List<Scope> scope;
-    @ElementList(name = "Impact",inline = true, required = false)
+    @ElementList(name = "Impact", inline = true, required = false)
     public List<Impacts> impact;
-    @ElementList(name = "Note",inline = true, required = false)
+    @ElementList(name = "Note", inline = true, required = false)
     public List<Notes> note;
 
     public List<Scope> getScope() {
@@ -38,4 +38,5 @@ public class Consequence {
     public void setNote(List<Notes> note) {
         this.note = note;
     }
+
 }

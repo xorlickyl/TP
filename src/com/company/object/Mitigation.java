@@ -10,14 +10,17 @@ import java.util.List;
 
 @Root(name = "Mitigation", strict = false)
 public class Mitigation {
-    @ElementList(name="Phase",inline = true, required = false)
+    @ElementList(name = "Phase", inline = true, required = false)
     public List<Phase> phase;
-    @Element(name="Description",required = false)
-    public Description description;
-   @Element(name="Effectiveness", required = false)
-   public String effectiveness;
-    @Element(name="Strategy",required = false)
+    @Element(name = "Description", required = false)
+    public String description;
+    @Element(name = "Effectiveness", required = false)
+    public String effectiveness;
+    @Element(name = "Strategy", required = false)
     public String strategy;
+
+    public Mitigation() {
+    }
 
     public List<Phase> getPhase() {
         return phase;
@@ -27,11 +30,11 @@ public class Mitigation {
         this.phase = phase;
     }
 
-    public Description getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Description description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -49,5 +52,15 @@ public class Mitigation {
 
     public void setStrategy(String strategy) {
         this.strategy = strategy;
+    }
+
+    @Override
+    public String toString() {
+        return "Mitigation{" +
+                "phase=" + phase +
+                ", description=" + description +
+                ", effectiveness='" + effectiveness + '\'' +
+                ", strategy='" + strategy + '\'' +
+                '}';
     }
 }

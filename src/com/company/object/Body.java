@@ -1,12 +1,15 @@
 package com.company.object;
 
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Text;
 
-@Root(name = "Effectiveness", strict = false)
-public class Effectiveness {
-    @Element(name = "Effectiveness", required = false)
+@Root(name = "Body_Text", strict = false)
+public class Body {
+    @Text(required = false)
     public String text;
+
+    public Body() {
+    }
 
     public String getText() {
         return text;

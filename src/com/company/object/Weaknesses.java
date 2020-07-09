@@ -8,7 +8,7 @@ import java.util.List;
 //@Element(name = "Weaknesses")
 @Root(name = "Weaknesses", strict = false)
 public class Weaknesses {
-    @ElementList(name="Weakness",inline = true, required = false)
+    @ElementList(name = "Weakness", inline = true, required = false)
     public List<Weakness> Weakness;
 
     public List<Weakness> getWeakness() {

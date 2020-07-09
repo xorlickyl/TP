@@ -2,12 +2,13 @@ package com.company.object;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
 import java.util.List;
 
 @Root(name = "Related_Weaknesses", strict = false)
 public class Child {
 
-    @ElementList(name = "Related_Weakness",inline = true, required = false)
+    @ElementList(name = "Related_Weakness", inline = true, required = false)
     public List<Child_ID> Child_id;
 
     public List<Child_ID> getChild_id() {

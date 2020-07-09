@@ -9,14 +9,14 @@ public class Weakness {
 
     @Attribute(name = "ID", required = false)
     public int ID;
-    @Attribute(name="Name",  required = false)
+    @Attribute(name = "Name", required = false)
     public String name;
 
-    @Element(name="Description",  required = false)
+    @Element(name = "Description", required = false)
     public String Description;
-    @Element(name="Extended_Description",  required = false)
+    @Element(name = "Extended_Description", required = false)
     public String Extended_Description;
-    @Element(name = "Related_Weaknesses", required=false)
+    @Element(name = "Related_Weaknesses", required = false)
     public Child children;
     @Element(name = "Applicable_Platforms", required = false)
     public Platforms platforms;
@@ -24,17 +24,17 @@ public class Weakness {
     public Modes modes;
     @Element(name = "Likelihood_Of_Exploit", required = false)
     public String Likelihood_Of_Exploit;
-    @Element(name = "Common_Consequences",required = false)
+    @Element(name = "Common_Consequences", required = false)
     public Consequences consequences;
-    @Element(name="Potential_Mitigations", required = false)
+    @Element(name = "Potential_Mitigations", required = false)
     public Mitigations mitigations;
-    @Element(name="Demonstrative_Examples", required = false)
+    @Element(name = "Demonstrative_Examples", required = false)
     public Demo_Example demo_example;
-    @Element(name="Observed_Examples",required = false)
+    @Element(name = "Observed_Examples", required = false)
     public Observed_Examples observed_examples;
-    @Element(name="References",required = false)
+    @Element(name = "References", required = false)
     public References references;
-    @Element(name="Content_History",required = false)
+    @Element(name = "Content_History", required = false)
     public Content_History content_history;
 
     public int getID() {

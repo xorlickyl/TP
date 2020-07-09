@@ -3,11 +3,11 @@ package com.company.object;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(name="Language",strict = false)
+@Root(name = "Language", strict = false)
 public class Language {
-    @Attribute(name="Class", required = false)
+    @Attribute(name = "Class", required = false)
     public String name_class;
-    @Attribute(name="Name", required = false)
+    @Attribute(name = "Name", required = false)
     public String name;
 
     public void setName(String name) {
